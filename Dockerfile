@@ -1,9 +1,9 @@
-FROM gradle:6.8.3-jdk11-alpine as builder
+FROM gradle:6.9.3-jdk11-alpine as builder
 COPY --chown=gradle:gradle . /app
 WORKDIR /app
 RUN gradle bootJar
 
-FROM openjdk:11-jdk-alpine
+FROM openjdk:11-jre-slim-buster
 EXPOSE 8080
 VOLUME /tmp
 ARG LIBS=app/build/libs
