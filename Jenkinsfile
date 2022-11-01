@@ -33,7 +33,7 @@ node {
         
         if(response=="Yes") {
             stage('Deploy to Kuberenetes cluster - DataService') {
-                sh 'docker stop event-data'
+                // sh 'docker stop event-data'
                 sh 'kubectl create deployment event-data --image=event-data:v1.0'
                 sh 'kubectl expose deployment event-data --type=LoadBalancer --port=8080'
             }
